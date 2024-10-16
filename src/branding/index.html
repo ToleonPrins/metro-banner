@@ -147,8 +147,6 @@
         font-style: normal;
       }
 
-     
-
       /* ПЛАНШЕТЫ */
       /* пока нету */
 
@@ -156,13 +154,246 @@
         body {
           display: none;
         }
+      } */
+      /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
+      @media (min-width: 320px) {
+        /* АНИМАЦИИ */
+        @keyframes fadeInUpBuilding {
+          0% {
+            transform: translateY(10px);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+        @keyframes slideInLeft {
+          0% {
+            transform: translateX(-5%);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes logoAppear {
+          0% {
+            transform: scale(1.2);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        @keyframes moveDownRight {
+          0% {
+            transform: scale(1.1);
+            transform-origin: top;
+          }
+          100% {
+            transform: scale(1.2);
+            transform-origin: top;
+          }
+        }
+        @keyframes fadeInUp {
+          0% {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        .background {
+          height: 100%;
+          position: absolute;
+          width: 100%;
+          z-index: 0;
+          background: radial-gradient(
+            circle,
+            #1b4f7a 0%,
+            #00073a 64%,
+            #000000 100%
+          );
+        }
+
+        .gradient {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 20vh;
+          z-index: 30;
+          pointer-events: none;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 1),
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.7),
+            transparent
+          );
+        }
+
+        .mobile-line-break {
+          display: block;
+        }
+
+        .mobile-line-break {
+          display: block;
+        }
+
+        .centered-text {
+          position: absolute;
+          top: 3%;
+          width: 100%;
+          text-align: left;
+          color: white;
+          z-index: 32;
+        }
+
+        .centered-text h1 {
+          font-size: 5vw;
+          color: #e7d49f;
+          margin-left: 10px;
+          animation: slideInLeft 2s ease-out;
+        }
+
+        .centered-text h2 {
+          font-size: 3.5vw;
+          color: white;
+          margin: 0;
+        }
+
+        .centered-text .line1 {
+          font-size: 6vw;
+          display: block;
+          margin-left: 10px;
+          opacity: 0;
+          animation: slideInLeft 2s ease-out;
+          animation-delay: 1s;
+          animation-fill-mode: forwards;
+        }
+
+        .centered-text .line2 {
+          font-size: 6vw;
+          display: block;
+          margin-left: 6vw;
+          opacity: 0;
+          animation: slideInLeft 2s ease-out;
+          animation-delay: 1.8s;
+          animation-fill-mode: forwards;
+        }
+
+        .logo {
+          position: absolute;
+          top: 3%;
+          right: 35%;
+          width: 50px;
+          height: auto;
+          z-index: 10;
+          animation: logoAppear 1.5s ease-out;
+        }
+
+        .salut {
+          position: absolute;
+          top: -5%;
+          left: -20%;
+          width: 50%;
+          height: auto;
+          transform: rotate(-15deg);
+          z-index: 4;
+          mask-image: linear-gradient(
+            to bottom right,
+            rgba(0, 0, 0, 1) 20%,
+            rgba(0, 0, 0, 0) 100%
+          );
+        }
+
+        .building {
+          position: absolute;
+          bottom: -15%;
+          left: 52%;
+          width: 60%;
+          height: auto;
+          z-index: 9;
+          animation: fadeInUpBuilding 15s ease-in-out;
+          animation-delay: 0s;
+        }
+
+        .road {
+          position: absolute;
+          display: block;
+          animation: none;
+          top: -5%;
+          left: 30%;
+          width: 70%;
+          height: auto;
+          z-index: 8;
+          transform: rotate(-7deg) translateX(20%);
+        }
+
+        .people-desktop {
+          position: absolute;
+          display: block;
+          bottom: -5%;
+          left: -20%;
+          width: auto;
+          height: auto;
+          max-width: 250px;
+          z-index: 10;
+          animation: none;
+          animation: moveDownRight 15s ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .date {
+          display: none;
+        }
+
+        .description-text {
+          position: fixed;
+          bottom: 1%;
+          width: 100%;
+          margin-left: 10px;
+          font-size: 2vw;
+          font-weight: 400;
+          color: white;
+          text-align: left;
+          z-index: 100;
+        }
+
+        @keyframes slideInLeftDate {
+          0% {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
+        .date-text {
+          position: fixed;
+          bottom: 10%;
+          width: 90%;
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+          font-size: 4vw;
+          font-weight: bold;
+          color: #efd59e;
+          text-align: center;
+          z-index: 50;
+          animation: slideInLeftDate 2s ease-out;
+        }
       }
 
-      @media (min-width: 320px) {
-
-      } */
-
-       /* СРЕДНИЕ ТЕЛЕФОНЫ */
+      /* СРЕДНИЕ ТЕЛЕФОНЫ */
       @media (min-width: 375px) {
         /* АНИМАЦИИ */
         @keyframes fadeInUpBuilding {
@@ -374,9 +605,7 @@
 
         @keyframes slideInLeftDate {
           0% {
-            transform: translateX(
-              100%
-            );
+            transform: translateX(100%);
             opacity: 0;
           }
           100% {
@@ -433,9 +662,9 @@
           width: 90px;
         }
       }
- 
- /* ДЕСКТОП */
- @media (min-width: 1500px) {
+
+      /* ДЕСКТОП */
+      @media (min-width: 1500px) {
         /* АНИМАЦИИ */
         @keyframes fadeInUpBuilding {
           0% {
@@ -637,7 +866,6 @@
           z-index: 31;
         }
       }
-
     </style>
   </head>
   <body>
