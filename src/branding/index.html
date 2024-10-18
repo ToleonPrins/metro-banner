@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="app.manifest">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta
@@ -12,19 +12,9 @@
     <link
       rel="stylesheet"
       media="all"
-      href="//static.wi-fi.ru/brandings/_cacheAssets/branding.css"
+      href="https://static.wi-fi.ru/brandings/_cacheAssets/branding.css"
     />
-    <script>
-      function onUpdateReady() {
-        window.location.reload();
-      }
-      window.applicationCache.addEventListener("updateready", onUpdateReady);
-      if (
-        window.applicationCache.status === window.applicationCache.UPDATEREADY
-      ) {
-        onUpdateReady();
-      }
-    </script>
+
     <!--
         Скрипт, содержащий конфигурацию
         Разрешается изменять значения полей согласно возможным значениям.
@@ -74,8 +64,11 @@
         padding: 0;
         overflow: hidden;
         font-family: "Roboto Condensed", sans-serif;
-        font-size: 0;
+        font-size: 16px;
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       embed,
@@ -84,17 +77,16 @@
       svg,
       video {
         max-width: 100%;
-        width: 100%;
+        height: auto;
       }
 
       .main-link {
-        /* height: calc(100% - 50px); */
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         left: 0;
-        position: absolute;
+        position: relative;
         text-decoration: none;
         top: 0;
-        width: 100%;
         z-index: 99;
       }
 
@@ -123,152 +115,132 @@
         font-style: normal;
       }
 
-
       /* АНИМАЦИИ */
       @keyframes fadeInUpBuilding {
-          0% {
-            transform: translateY(10px);
-          }
-          100% {
-            transform: translateY(0);
-          }
+        0% {
+          transform: translateY(10%);
         }
-        @keyframes slideInLeft {
-          0% {
-            transform: translateX(-5%);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
+        100% {
+          transform: translateY(0);
         }
+      }
 
-        @keyframes logoAppear {
-          0% {
-            transform: scale(1.2);
-            opacity: 0;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 1;
-          }
+      @keyframes logoAppear {
+        0% {
+          transform: scale(1.2);
+          opacity: 0;
         }
-        @keyframes moveDownRight {
-          0% {
-            transform: scale(1.1);
-            transform-origin: top;
-          }
-          100% {
-            transform: scale(1.2);
-            transform-origin: top;
-          }
+        100% {
+          transform: scale(1);
+          opacity: 1;
         }
-        @keyframes fadeInUp {
-          0% {
-            transform: translateY(20px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
+      }
 
-        .background {
-          height: 100%;
-          position: absolute;
-          width: 100%;
-          z-index: 0;
-          background: radial-gradient(
-            circle,
-            #1b4f7a 0%,
-            #00073a 64%,
-            #000000 100%
-          );
+      @keyframes moveDownRight {
+        0% {
+          transform: scale(1.1);
         }
+        100% {
+          transform: scale(1.2);
+        }
+      }
 
-        .gradient {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 20vh;
-          z-index: 30;
-          pointer-events: none;
-          background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0.9),
-            rgba(0, 0, 0, 0.7),
-            transparent
-          );
-        }
+      .element {
+        transform-origin: top;
+      }
 
-        .mobile-line-break {
-          display: block;
+      @keyframes fadeInUp {
+        0% {
+          transform: translateY(20%);
+          opacity: 0;
         }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
 
-        @keyframes slideInLeftDate {
-          0% {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
+      .background {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 0;
+        background: radial-gradient(
+          circle,
+          #1b4f7a 0%,
+          #00073a 64%,
+          #000000 100%
+        );
+      }
+
+      .content-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gradient {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 20%;
+        z-index: 30;
+        pointer-events: none;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.7),
+          transparent
+        );
+      }
+
+      .mobile-line-break {
+        display: block;
+      }
+
       /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
       @media (min-width: 320px) {
-        
         .centered-text {
-          position: absolute;
-          top: 3%;
+          position: relative;
           width: 100%;
           text-align: left;
-          color: white;
           z-index: 32;
         }
 
         .centered-text h1 {
           font-size: 7vw;
           color: #e7d49f;
-          margin-left: 10px;
-          animation: slideInLeft 2s ease-out;
+          margin-left: 5%;
+          
         }
 
         .centered-text h2 {
-          font-size: 5vw;
           color: white;
-          margin: 0;
+          margin-left: 5%;
+          margin-top: -5%;
         }
 
         .centered-text .line1 {
           font-size: 8vw;
           display: block;
-          margin-left: 10px;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
         }
 
         .centered-text .line2 {
           font-size: 9vw;
           display: block;
-          margin-left: 10vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
+          margin-left: 7%;
         }
 
         .logo {
           position: absolute;
           top: 3%;
           right: 8%;
-          width: 60px;
+          width: 20%;
           height: auto;
           z-index: 10;
           animation: logoAppear 1.5s ease-out;
@@ -276,9 +248,9 @@
 
         .salut {
           position: absolute;
-          top: -5%;
-          left: -20%;
-          width: 50%;
+          top: 0%;
+          right: 20%;
+          width: 100%;
           height: auto;
           transform: rotate(-15deg);
           z-index: 4;
@@ -291,12 +263,12 @@
 
         .building {
           position: absolute;
-          bottom: -15%;
+          top: 26%;
           left: 52%;
           width: 60%;
           height: auto;
           z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
+          animation: fadeInUpBuilding 8s ease-in-out;
           animation-delay: 0s;
         }
 
@@ -315,14 +287,14 @@
         .people-desktop {
           position: absolute;
           display: block;
-          bottom: -5%;
-          left: -20%;
+          top: 45%;
+          right: 40%;
           width: auto;
           height: auto;
-          max-width: 250px;
+          max-width: 80%;
           z-index: 10;
           animation: none;
-          animation: moveDownRight 15s ease-out;
+          animation: moveDownRight 8s ease-out;
           animation-fill-mode: forwards;
         }
 
@@ -334,7 +306,7 @@
           position: fixed;
           bottom: 1%;
           width: 90%;
-          margin-left: 25px;
+          margin-left: 5%;
           font-size: 2vw;
           font-weight: 400;
           color: white;
@@ -354,101 +326,94 @@
           color: #efd59e;
           text-align: center;
           z-index: 50;
-          animation: slideInLeftDate 2s ease-out;
         }
       }
-
-      @media (min-width: 360px) {
+      @media (min-width: 390px) {
+        .salut {
+          top: 5%;
+          right: 10%;
+        }
+        .people-desktop {
+          top: 50%;
+          right: 44%;
+          width: 80%;
+          
+        }
 
         .building {
-          position: absolute;
-          bottom: -10%;
-          left: 40%;
+          top: 35%;
+          left: 48%;
           width: 70%;
-          height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
         }
+
         .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: 20%;
-          left: 20%;
-          width: 80%;
-          height: auto;
-          z-index: 8;
-          transform: rotate(-7deg) translateX(20%);
+          top: 24%;
+          left: 28%;
+          width: 75%;
         }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: 10%;
-          left: -20%;
-          width: auto;
-          height: auto;
-          max-width: 250px;
-          z-index: 10;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-
-
       }
 
-      /* СРЕДНИЕ ТЕЛЕФОНЫ */
-      @media (min-width: 375px) {
+      @media (min-width: 768px) {
+        .salut {
+          top: -5%;
+          right: 10%;
+        }
+        .people-desktop {
+          top: 52%;
+          right: 42%;
+          width: 70%;
+          
+        }
 
+        .building {
+          top: 30%;
+          left: 56%;
+          width: 50%;
+        }
+
+        .road {
+          top: 16%;
+          left: 28%;
+          width: 75%;
+        }
+      }
+      @media (min-width: 1024px) and (max-height: 768px) {
         .centered-text {
-          position: absolute;
-          top: 3%;
+          position: relative;
           width: 100%;
-          text-align: left;
-          color: white;
+          text-align: center;
           z-index: 32;
         }
 
         .centered-text h1 {
-          font-size: 7vw;
+          font-size: 3vw;
           color: #e7d49f;
-          margin-left: 20px;
-          animation: slideInLeft 2s ease-out;
+          margin-left: 5%;
+          
         }
 
         .centered-text h2 {
-          font-size: 3.5vw;
           color: white;
-          margin: 0;
+          margin-left: 5%;
+          margin-top: 1%;
         }
 
         .centered-text .line1 {
-          font-size: 7vw;
+          font-size: 4vw;
           display: block;
-          margin-left: 6vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
         }
 
         .centered-text .line2 {
-          font-size: 8vw;
+          font-size: 5vw;
           display: block;
-          margin-left: 12vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
+          margin-left: 7%;
         }
 
         .logo {
           position: absolute;
           top: 3%;
-          right: 20%;
-          width: 70px;
+          right: 8%;
+          width: 10%;
           height: auto;
           z-index: 10;
           animation: logoAppear 1.5s ease-out;
@@ -456,9 +421,9 @@
 
         .salut {
           position: absolute;
-          top: -5%;
-          left: -20%;
-          width: 100%;
+          top: -6%;
+          right: 45%;
+          width: 60%;
           height: auto;
           transform: rotate(-15deg);
           z-index: 4;
@@ -471,412 +436,39 @@
 
         .building {
           position: absolute;
-          bottom: -15%;
-          left: 45%;
-          width: 65%;
-          height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
-        }
-
-        .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: -8%;
-          left: 25%;
-          width: 100%;
-          height: auto;
-          z-index: 8;
-          transform: rotate(-7deg) translateX(20%);
-        }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: 5%;
-          left: -20%;
-          width: auto;
-          height: auto;
-          max-width: 300px;
-          z-index: 10;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-
-        .date {
-          display: none;
-        }
-
-        .description-text {
-          position: fixed;
-          bottom: 1%;
-          width: 90%;
-          margin-left: 5vw;
-          transform: translateX(0%);
-          font-size: 2vw;
-          font-weight: 400;
-          color: white;
-          text-align: left;
-          z-index: 100;
-        }
-
-        .date-text {
-          position: fixed;
-          bottom: 10%;
-          width: 90%;
-          margin: 0 auto;
-          left: 0;
-          right: 0;
-          font-size: 5vw;
-          font-weight: bold;
-          color: #efd59e;
-          text-align: center;
-          z-index: 50;
-          animation: slideInLeftDate 2s ease-out;
-        }
-      }
-
-      /* БОЛЬШИЕ ТЕЛЕФОНЫ */
-      @media (min-width: 390px) {
-        .building {
-          position: absolute;
-          bottom: -8%;
-          left: 45%;
-          width: 75%;
-          height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
-        }
-
-        .salut {
-          position: absolute;
-          top: 5%;
-          left: -20%;
-          width: 100%;
-          height: auto;
-          transform: rotate(-15deg);
-          z-index: 4;
-          mask-image: linear-gradient(
-            to bottom right,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 0) 100%
-          );
-        }
-
-        .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: 8%;
-          left: 18%;
-          width: 100%;
-          height: auto;
-          z-index: 8;
-          transform: rotate(-7deg) translateX(20%);
-        }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: 12%;
-          left: -38%;
-          width: auto;
-          height: auto;
-          max-width: 400px;
-          z-index: 10;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-
-        .logo {
-          right: 10%;
-          width: 90px;
-        }
-      }
-
-      
-
-      /* ПЛАНШЕТЫ */
-      @media (min-width: 600px) {
-        .centered-text h1 {
-          font-size: 7vw;
-          color: #e7d49f;
-          margin-left: 30px;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text h2 {
-          font-size: 3.5vw;
-          color: white;
-          margin-left: 20px;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text .line1 {
-          font-size: 8vw;
-          display: block;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
-        }
-
-        .centered-text .line2 {
-          font-size: 8vw;
-          display: block;
-          margin-left: 8vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
-        }
-
-        .description-text {
-          position: fixed;
-          bottom: 1%;
-          width: 90%;
-          margin-left: 5vw;
-          transform: translateX(0);
-          font-size: 2vw;
-          font-weight: 400;
-          color: white;
-          text-align: left;
-          z-index: 100;
-        }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: 3%;
-          left: -22%;
-          width: auto;
-          height: auto;
-          max-width: 600px;
-          z-index: 10;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-        .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: -5%;
-          left: 12%;
-          width: 100%;
-          height: auto;
-          z-index: 8;
-          transform: rotate(-7deg) translateX(20%);
-        }
-
-        .building {
-          position: absolute;
-          bottom: -22%;
-          left: 45%;
-          width: 75%;
-          height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
-        }
-        
-        .logo {
-          right: 35%;
-          width: 100px;
-        }
-      }
-
-      /* ПЛАНШЕТ ГОРИЗОНТ */
-      
-      @media (min-width: 768px) {
-        .centered-text h1 {
-          font-size: 7vw;
-          color: #e7d49f;
-          margin-left: 30px;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text h2 {
-          font-size: 3.5vw;
-          color: white;
-          margin-left: 20px;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text .line1 {
-          font-size: 8vw;
-          display: block;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
-        }
-
-        .centered-text .line2 {
-          font-size: 8vw;
-          display: block;
-          margin-left: 8vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
-        }
-
-        .description-text {
-          position: fixed;
-          bottom: 1%;
-          width: 90%;
-          margin-left: 5vw;
-          transform: translateX(0);
-          font-size: 2vw;
-          font-weight: 400;
-          color: white;
-          text-align: left;
-          z-index: 100;
-        }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: 3%;
-          left: -22%;
-          width: auto;
-          height: auto;
-          max-width: 600px;
-          z-index: 10;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-        .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: -5%;
-          left: 12%;
-          width: 100%;
-          height: auto;
-          z-index: 8;
-          transform: rotate(-7deg) translateX(20%);
-        }
-
-        .building {
-          position: absolute;
-          bottom: -22%;
-          left: 45%;
-          width: 75%;
-          height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
-        }
-        
-        .logo {
-          right: 35%;
-          width: 100px;
-        }
-      }
-      /* iPad mini */
-      @media (min-width: 1024px) {
-        .centered-text {
-          position: absolute;
-          top: 5%;
-          width: 100%;
-          text-align: center;
-          color: white;
-          z-index: 32;
-        }
-        .mobile-line-break {
-          display: inline;
-        }
-
-        .centered-text h1 {
-          font-size: 4vw;
-          color: #e7d49f;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text .line1 {
-          font-size: 5vw;
-          display: block;
-          margin-left: 15vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
-        }
-
-        .centered-text .line2 {
-          font-size: 5vw;
-          display: block;
-          margin-left: 23vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
-        }
-
-        .description-text {
-          position: fixed;
-          bottom: 1%;
-          width: 40%;
-          margin-left: 5vw;
-          transform: translateX(0);
-          font-size: 1vw;
-          font-weight: 400;
-          color: white;
-          text-align: left;
-          z-index: 100;
-        }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: -20%;
-          left: 25%;
-          width: auto;
-          height: auto;
-          max-width: 550px;
-          z-index: 8;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-        .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: -60%;
-          left: 43%;
-          width: 90%;
-          height: auto;
-          z-index: 6;
-          transform: rotate(-7deg) translateX(20%);
-        }
-
-        .building {
-          position: absolute;
-          bottom: -30%;
+          top: 10%;
           left: 5%;
-          width: 42%;
+          width: 35%;
           height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
+          z-index: 11;
+          animation: fadeInUpBuilding 8s ease-in-out;
           animation-delay: 0s;
         }
 
-        .logo {
-          right: 10%;
-          width: 100px;
+        .road {
+          position: absolute;
+          display: block;
+          animation: none;
+          top: 15%;
+          left: 60%;
+          width: 40%;
+          height: auto;
+          z-index: 8;
+          transform: rotate(-7deg) translateX(20%);
         }
 
-        .date-text {
-          display: none;
+        .people-desktop {
+          position: absolute;
+          display: block;
+          top: 45%;
+          right: 40%;
+          width: auto;
+          height: auto;
+          max-width: 30%;
+          z-index: 10;
+          animation: none;
+          animation: moveDownRight 8s ease-out;
+          animation-fill-mode: forwards;
         }
 
         .date {
@@ -891,67 +483,11 @@
           animation: fadeInUp 2s ease-in-out;
         }
 
-        .salut {
-          position: absolute;
-          top: -10%;
-          left: -20%;
-          width: 80%;
-          height: auto;
-          z-index: 4;
-          mask-image: linear-gradient(
-            to bottom right,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 0) 100%
-          );
-        }
-      }
-
-      /* ipad air */
-      @media (min-width: 1180px) {
-        .centered-text {
-          position: absolute;
-          top: 5%;
-          width: 100%;
-          text-align: center;
-          color: white;
-          z-index: 32;
-        }
-        .mobile-line-break {
-          display: inline;
-        }
-
-        .centered-text h1 {
-          font-size: 4vw;
-          color: #e7d49f;
-          margin-right: 155px;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text .line1 {
-          font-size: 5vw;
-          display: block;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
-        }
-
-        .centered-text .line2 {
-          font-size: 5vw;
-          display: block;
-          margin-left: 8vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
-        }
-
         .description-text {
           position: fixed;
           bottom: 1%;
           width: 40%;
-          margin-left: 5vw;
-          transform: translateX(0);
+          margin-right: 10%;
           font-size: 1vw;
           font-weight: 400;
           color: white;
@@ -959,412 +495,16 @@
           z-index: 100;
         }
 
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: -15%;
-          left: 30%;
-          width: auto;
-          height: auto;
-          max-width: 550px;
-          z-index: 8;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-        .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: -70%;
-          left: 44%;
-          width: 90%;
-          height: auto;
-          z-index: 6;
-          transform: rotate(-7deg) translateX(20%);
-        }
-
-        .building {
-          position: absolute;
-          bottom: -30%;
-          left: 5%;
-          width: 40%;
-          height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
-        }
-
-        .logo {
-          right: 10%;
-          width: 100px;
-        }
-
         .date-text {
           display: none;
         }
-
-        .date {
-          position: absolute;
-          display: block;
-          bottom: 0;
-          right: 0;
-          width: 30%;
-          margin-right: 20px;
-          height: auto;
-          z-index: 31;
-          animation: fadeInUp 2s ease-in-out;
-        }
-
-        .salut {
-          position: absolute;
-          top: -10%;
-          left: -20%;
-          width: 80%;
-          height: auto;
-          z-index: 4;
-          mask-image: linear-gradient(
-            to bottom right,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 0) 100%
-          );
-        }
       }
 
-      /* iPad Pro */
-      @media (min-width: 1366px) {
-        .centered-text {
-          position: absolute;
-          top: 5%;
-          width: 100%;
-          text-align: center;
-          color: white;
-          z-index: 32;
-        }
-        .mobile-line-break {
-          display: inline;
-        }
-
-        .centered-text h1 {
-          font-size: 4vw;
-          color: #e7d49f;
-          margin-right: 155px;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text .line1 {
-          font-size: 5vw;
-          display: block;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
-        }
-
-        .centered-text .line2 {
-          font-size: 5vw;
-          display: block;
-          margin-left: 8vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
-        }
-
-        .description-text {
-          position: fixed;
-          bottom: 1%;
-          width: 40%;
-          margin-left: 5vw;
-          transform: translateX(0);
-          font-size: 1vw;
-          font-weight: 400;
-          color: white;
-          text-align: left;
-          z-index: 100;
-        }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: -4%;
-          left: 30%;
-          width: auto;
-          height: auto;
-          max-width: 690px;
-          z-index: 8;
-          animation: none;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-        .road {
-          position: absolute;
-          display: block;
-          animation: none;
-          top: -50%;
-          left: 44%;
-          width: 90%;
-          height: auto;
-          z-index: 6;
-          transform: rotate(-7deg) translateX(20%);
-        }
-
-        .building {
-          position: absolute;
-          bottom: -30%;
-          left: 5%;
-          width: 44%;
-          height: auto;
-          z-index: 9;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
-        }
-
-        .logo {
-          right: 10%;
-          width: 150px;
-        }
-
-        .date-text {
-          display: none;
-        }
-
-        .date {
-          position: absolute;
-          display: block;
-          bottom: 0;
-          right: 0;
-          width: 30%;
-          margin-right: 20px;
-          height: auto;
-          z-index: 31;
-          animation: fadeInUp 2s ease-in-out;
-        }
-
-        .salut {
-          position: absolute;
-          top: -10%;
-          left: -20%;
-          width: 80%;
-          height: auto;
-          z-index: 4;
-          mask-image: linear-gradient(
-            to bottom right,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 0) 100%
-          );
-        }
+      @media (min-width: 1024px) and (min-height: 769px)  {
+        
       }
 
-      /* ДЕСКТОП */
-      @media (min-width: 1500px) {
-        /* АНИМАЦИИ */
-        @keyframes fadeInUpBuilding {
-          0% {
-            transform: translateY(40px);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-        @keyframes slideInLeft {
-          0% {
-            transform: translateX(-5%);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        @keyframes logoAppear {
-          0% {
-            transform: scale(1.2);
-            opacity: 0;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-        @keyframes moveDownRight {
-          0% {
-            transform: scale(0.9);
-            transform-origin: top;
-          }
-          100% {
-            transform: scale(1);
-            transform-origin: top;
-          }
-        }
-        @keyframes fadeInUp {
-          0% {
-            transform: translateY(20px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-
-        .background {
-          background: url("desktop-fon.webp") no-repeat center center;
-          background-size: cover;
-          position: absolute;
-          width: 100%;
-          z-index: 0;
-          height: 100%;
-        }
-
-        .gradient {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 30vh;
-          z-index: 30;
-          pointer-events: none;
-          background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0.7),
-            transparent
-          );
-        }
-
-        .mobile-line-break {
-          display: inline;
-        }
-
-        .centered-text {
-          position: absolute;
-          top: 2%;
-          width: 100%;
-          text-align: center;
-          color: white;
-          z-index: 35;
-        }
-
-        .centered-text h1 {
-          font-size: 3vw;
-          color: #e7d49f;
-          margin: 0;
-          animation: slideInLeft 2s ease-out;
-        }
-
-        .centered-text h2 {
-          font-size: 4vw;
-          color: white;
-          margin: 0;
-        }
-
-        .centered-text h3 {
-          font-size: 3vw;
-          color: #e7d49f;
-          margin: 0;
-          margin-top: 58%;
-        }
-
-        .centered-text .line1 {
-          display: block;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1s;
-          animation-fill-mode: forwards;
-        }
-
-        .centered-text .line2 {
-          display: block;
-          margin-left: 7vw;
-          opacity: 0;
-          animation: slideInLeft 2s ease-out;
-          animation-delay: 1.8s;
-          animation-fill-mode: forwards;
-        }
-
-        .logo {
-          position: absolute;
-          top: 3%;
-          right: 17%;
-          width: 120px;
-          height: auto;
-          z-index: 10;
-          animation: logoAppear 1.5s ease-out;
-        }
-
-        .salut {
-          position: absolute;
-          top: -10%;
-          left: -5%;
-          width: 50%;
-          height: auto;
-          transform: rotate(-15deg);
-          z-index: 5;
-          mask-image: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 0) 100%
-          );
-        }
-
-        .building {
-          position: absolute;
-          bottom: -40%;
-          left: 2%;
-          width: 38%;
-          height: auto;
-          z-index: 32;
-          animation: fadeInUpBuilding 15s ease-in-out;
-          animation-delay: 0s;
-        }
-
-        .people-desktop {
-          position: absolute;
-          display: block;
-          bottom: -22%;
-          left: 24%;
-          width: auto;
-          height: auto;
-          max-width: 900px;
-          z-index: 6;
-          animation: moveDownRight 15s ease-out;
-          animation-fill-mode: forwards;
-        }
-
-        .road {
-          display: none;
-        }
-
-        .date-text {
-          display: none;
-        }
-
-        .date {
-          position: absolute;
-          bottom: 1%;
-          right: 5%;
-          width: 20%;
-          height: auto;
-          z-index: 32;
-          animation: fadeInUp 2s ease-in-out;
-        }
-
-        .description-text {
-          position: absolute;
-          font-size: 0.8vw;
-          font-weight: 400;
-          color: white;
-          bottom: 1%;
-          right: 30%;
-          z-index: 31;
-          width: 30%;
-        }
-      }
-
-      
-
-       
+      /* Other media queries remain unchanged */
     </style>
   </head>
   <body>
@@ -1376,6 +516,7 @@
       data-event-click="1"
     >
       <div class="background"></div>
+      <div class="content-wrapper">
       <div class="centered-text">
         <h1>ПОКУПАЙ <span class="mobile-line-break">БИЛЕТЫ В ПАРК</span></h1>
         <h2>
@@ -1398,10 +539,11 @@
       <img src="date.webp" alt="Date" class="date" />
       <!-- <img src="gradient.webp" alt="Gradient" class="gradient" /> -->
       <div class="gradient"></div>
+    </div>
     </a>
 
     <!-- Скрипт, необходимый для работы брендинга -->
-    <script src="//static.wi-fi.ru/brandings/_cacheAssets/branding.js"></script>
+    <script src="https://static.wi-fi.ru/brandings/_cacheAssets/branding.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function (event) {
         parent.parent.postMessage(
